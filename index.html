@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Matrix</title>
+<meta name="description" content="Weigh your options with real numbers. A weighted decision matrix with built-in sensitivity analysis.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="app-header">
+    <h1>Decision Matrix</h1>
+    <p class="tagline">Stop overthinking. Weigh what actually matters, and see why.</p>
+  </header>
+
+  <section class="card">
+    <label for="decision-title">What are you deciding?</label>
+    <input type="text" id="decision-title" placeholder="e.g. Choosing between two job offers">
+    <div id="template-suggestion" class="template-suggestion hidden"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-header">
+      <h2>Options</h2>
+      <button id="add-option" class="btn-add" type="button">+ Add option</button>
+    </div>
+    <p class="hint">2 to 5 things you're choosing between.</p>
+    <div id="options-list" class="options-list"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-header">
+      <h2>Criteria &amp; weights</h2>
+      <button id="add-criterion" class="btn-add" type="button">+ Add criterion</button>
+    </div>
+    <p class="hint">Up to 8 things that matter. Weight = how much you care (1&ndash;10).</p>
+    <div id="criteria-list" class="criteria-list"></div>
+  </section>
+
+  <section class="card" id="scoring-section">
+    <h2>Score each option</h2>
+    <p class="hint">Rate how well each option does on each criterion (1&ndash;10).</p>
+    <div id="scoring-grid" class="scoring-grid"></div>
+  </section>
+
+  <section class="card" id="results-section">
+    <h2>Result</h2>
+    <div id="results"></div>
+  </section>
+
+  <section class="card" id="sensitivity-section">
+    <h2>Sensitivity analysis</h2>
+    <p class="hint">How fragile is your result? This shows which weights would need to shift to change the winner.</p>
+    <div id="sensitivity"></div>
+  </section>
+
+  <footer class="app-footer">
+    <button id="reset-btn" class="btn-text" type="button">Reset everything</button>
+  </footer>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
