@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Roulette — Tool</title>
+<meta name="description" content="Weigh your options with real numbers. A weighted decision matrix with sensitivity analysis and a history of past decisions.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="app-header">
+    <a href="index.html" class="back-link">&larr; About Decision Roulette</a>
+    <h1>Decision Roulette</h1>
+    <p class="tagline">Stop overthinking. Weigh what actually matters, and see why.</p>
+  </header>
+
+  <nav class="view-tabs">
+    <button id="tab-setup" class="view-tab" type="button">Current Decision</button>
+    <button id="tab-history" class="view-tab" type="button">Past Decisions <span id="history-count" class="tab-badge hidden">0</span></button>
+  </nav>
+
+  <div id="view-setup">
+
+    <section class="card">
+      <label for="decision-title">What are you deciding?</label>
+      <input type="text" id="decision-title" placeholder="e.g. Choosing between two job offers">
+      <div id="template-suggestion" class="template-suggestion hidden"></div>
+    </section>
+
+    <section class="card hidden" id="history-signals-card">
+      <h2>From your past decisions</h2>
+      <div id="history-signals"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>Options</h2>
+        <button id="add-option" class="btn-add" type="button">+ Add option</button>
+      </div>
+      <p class="hint">2 to 5 things you're choosing between.</p>
+      <div id="options-list" class="options-list"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>Criteria &amp; weights</h2>
+        <button id="add-criterion" class="btn-add" type="button">+ Add criterion</button>
+      </div>
+      <p class="hint">Up to 8 things that matter. Weight = how much you care (1&ndash;10). Percentages show relative emphasis.</p>
+      <div id="criteria-list" class="criteria-list"></div>
+    </section>
+
+    <section class="card" id="scoring-section">
+      <h2>Score each option</h2>
+      <p class="hint">Rate how well each option does on each criterion (1&ndash;10).</p>
+      <div id="scoring-grid" class="scoring-grid"></div>
+    </section>
+
+    <section class="card" id="results-section">
+      <h2>Result</h2>
+      <div id="results"></div>
+    </section>
+
+    <section class="card" id="sensitivity-section">
+      <h2>Sensitivity analysis</h2>
+      <p class="hint">How fragile is your result? This compares your top 2 options and updates live as you adjust weights.</p>
+      <div id="sensitivity"></div>
+    </section>
+
+    <footer class="app-footer">
+      <button id="new-decision-btn" class="btn-text">Start a new decision</button>
+    </footer>
+
+  </div>
+
+  <div id="view-history" class="hidden">
+
+    <div id="history-list-view">
+      <section class="card">
+        <div class="card-header">
+          <h2>Past Decisions</h2>
+          <button id="clear-history-btn" class="btn-text">Clear all</button>
+        </div>
+        <p class="hint">Decisions are saved here automatically once they have a recommendation. Log what you actually chose to build a track record.</p>
+        <div id="history-list"></div>
+      </section>
+    </div>
+
+    <div id="history-detail-view" class="hidden">
+      <button id="history-back-btn" class="btn-text">&larr; Back to list</button>
+      <section class="card" id="history-detail-content"></section>
+    </div>
+
+  </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

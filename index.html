@@ -4,97 +4,153 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Decision Roulette</title>
-<meta name="description" content="Weigh your options with real numbers. A weighted decision matrix with sensitivity analysis and a history of past decisions.">
+<meta name="description" content="A lightweight tool that forces structure onto big, high-stakes decisions — weighted scoring, sensitivity analysis, and a history that learns your patterns.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="app">
+<div class="landing">
 
-  <header class="app-header">
-    <h1>Decision Roulette</h1>
-    <p class="tagline">Stop overthinking. Weigh what actually matters, and see why.</p>
+  <header class="hero">
+    <p class="eyebrow">Decision Roulette</p>
+    <h1>Stop overthinking.<br>Start weighing.</h1>
+    <p class="hero-sub">
+      A lightweight tool for the decisions that actually matter &mdash; job offers, apartments, schools &mdash;
+      that forces structure onto a fuzzy choice without requiring a full spreadsheet.
+    </p>
+    <div class="hero-actions">
+      <a href="app.html" class="btn-primary">Start a decision &rarr;</a>
+      <a href="#how-it-works" class="btn-secondary">See how it works</a>
+    </div>
   </header>
 
-  <nav class="view-tabs">
-    <button id="tab-setup" class="view-tab" type="button">Current Decision</button>
-    <button id="tab-history" class="view-tab" type="button">Past Decisions <span id="history-count" class="tab-badge hidden">0</span></button>
-  </nav>
+  <main>
 
-  <div id="view-setup">
-
-    <section class="card">
-      <label for="decision-title">What are you deciding?</label>
-      <input type="text" id="decision-title" placeholder="e.g. Choosing between two job offers">
-      <div id="template-suggestion" class="template-suggestion hidden"></div>
+    <section class="section">
+      <p class="section-eyebrow">The problem</p>
+      <h2>Big decisions get juggled, not solved</h2>
+      <p class="section-lead">
+        People facing high-stakes decisions often juggle multiple competing criteria in their heads.
+        That leads to one of two places: decision paralysis from overthinking every angle, or a
+        gut-feel choice that can't be explained or revisited later. There's no lightweight tool that
+        forces structure onto a fuzzy decision without requiring a full spreadsheet &mdash; until now.
+      </p>
     </section>
 
-    <section class="card hidden" id="history-signals-card">
-      <h2>From your past decisions</h2>
-      <div id="history-signals"></div>
+    <section class="section" id="how-it-works">
+      <p class="section-eyebrow">How it works</p>
+      <h2>From "I don't know how to think about this" to a defensible answer, in one sitting</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <div>
+            <h3>Name the decision, add your options</h3>
+            <p>2 to 5 things you're actually choosing between.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <div>
+            <h3>Add criteria and weight what matters</h3>
+            <p>Up to 8 factors, each weighted 1&ndash;10 relative to the others. Smart suggestions kick in based on your decision title.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <div>
+            <h3>Score each option</h3>
+            <p>Rate every option against every criterion, 1&ndash;10. A running weighted total updates as you go.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <div>
+            <h3>Get a recommendation &mdash; and the "why"</h3>
+            <p>A weighted score per option, a clear winner, and a breakdown of exactly which criteria drove it.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">5</span>
+          <div>
+            <h3>See how robust that answer really is</h3>
+            <p>Sensitivity analysis shows how much a single weight would need to shift to flip the outcome.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">6</span>
+          <div>
+            <h3>Log what you actually chose</h3>
+            <p>Later, revisit the decision, record the real outcome, and build a track record that informs the next one.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
-    <section class="card">
-      <div class="card-header">
-        <h2>Options</h2>
-        <button id="add-option" class="btn-add" type="button">+ Add option</button>
-      </div>
-      <p class="hint">2 to 5 things you're choosing between.</p>
-      <div id="options-list" class="options-list"></div>
-    </section>
-
-    <section class="card">
-      <div class="card-header">
-        <h2>Criteria &amp; weights</h2>
-        <button id="add-criterion" class="btn-add" type="button">+ Add criterion</button>
-      </div>
-      <p class="hint">Up to 8 things that matter. Weight = how much you care (1&ndash;10). Percentages show relative emphasis.</p>
-      <div id="criteria-list" class="criteria-list"></div>
-    </section>
-
-    <section class="card" id="scoring-section">
-      <h2>Score each option</h2>
-      <p class="hint">Rate how well each option does on each criterion (1&ndash;10).</p>
-      <div id="scoring-grid" class="scoring-grid"></div>
-    </section>
-
-    <section class="card" id="results-section">
-      <h2>Result</h2>
-      <div id="results"></div>
-    </section>
-
-    <section class="card" id="sensitivity-section">
-      <h2>Sensitivity analysis</h2>
-      <p class="hint">How fragile is your result? This compares your top 2 options and updates live as you adjust weights.</p>
-      <div id="sensitivity"></div>
-    </section>
-
-    <footer class="app-footer">
-      <button id="new-decision-btn" class="btn-text">Start a new decision</button>
-    </footer>
-
-  </div>
-
-  <div id="view-history" class="hidden">
-
-    <div id="history-list-view">
-      <section class="card">
-        <div class="card-header">
-          <h2>Past Decisions</h2>
-          <button id="clear-history-btn" class="btn-text">Clear all</button>
+    <section class="section">
+      <p class="section-eyebrow">More than a spreadsheet</p>
+      <h2>The parts that make it a tool, not a template</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Sensitivity analysis</h3>
+          <p>
+            Comparing your top 2 options, the tool solves for exactly how much a criterion's weight would
+            need to move for the runner-up to overtake the leader &mdash; live, as you adjust weights.
+            <em>"If you valued Growth potential 67% less, Job A would overtake Job B."</em> Plus a plain-language
+            read on how close the call is.
+          </p>
         </div>
-        <p class="hint">Decisions are saved here automatically once they have a recommendation. Log what you actually chose to build a track record.</p>
-        <div id="history-list"></div>
-      </section>
-    </div>
+        <div class="feature-card">
+          <h3>Decision history that learns, lightly</h3>
+          <p>
+            Once a decision has a recommendation, it's saved automatically. Log the real outcome later, and
+            the tool flags whether it matched. On your next decision, it surfaces passive signals &mdash;
+            criteria you've consistently valued, or a pattern of going with your gut over a specific
+            criterion &mdash; as suggestions you can ignore, never as an automatic override.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <div id="history-detail-view" class="hidden">
-      <button id="history-back-btn" class="btn-text">&larr; Back to list</button>
-      <section class="card" id="history-detail-content"></section>
-    </div>
+    <section class="section">
+      <p class="section-eyebrow">Trade-offs, on purpose</p>
+      <h2>What v1 deliberately gives up</h2>
+      <div class="tradeoff-grid">
+        <div class="tradeoff-card">
+          <h3>Simplicity vs. flexibility</h3>
+          <p>
+            More criteria and options make the tool more powerful for complex decisions, but increase the
+            setup cost and risk of abandonment. V1 caps options at 5 and criteria at 8 to keep the whole
+            flow usable in one sitting, at the cost of not fully serving very complex decisions.
+          </p>
+        </div>
+        <div class="tradeoff-card">
+          <h3>Personalization vs. trust</h3>
+          <p>
+            Surfacing patterns from past decisions can make recommendations feel smarter, but if it's too
+            aggressive or opaque, it risks feeling like the tool is steering you. V1 keeps history-based
+            signals as passive suggestions you can ignore, never automatic adjustments to your weights or scores.
+          </p>
+        </div>
+      </div>
+    </section>
 
-  </div>
+    <section class="section">
+      <p class="section-eyebrow">Non-goals for v1</p>
+      <h2>What's deliberately out of scope</h2>
+      <ul class="non-goals">
+        <li>Collaborative or shared decision-making (e.g. two people scoring together)</li>
+        <li>More than 5 options or 8 criteria per decision</li>
+        <li>A mobile-native app &mdash; responsive web only</li>
+        <li>Proactive coaching or pop-ups based on history &mdash; learning only surfaces when you're actively setting up a new decision</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="landing-footer">
+    <a href="app.html" class="btn-primary">Start a decision &rarr;</a>
+    <p><a href="https://github.com/pateld44/decision-matrix" class="footer-link">View source &amp; full PRD on GitHub</a></p>
+  </footer>
 
 </div>
-<script src="app.js"></script>
 </body>
 </html>
